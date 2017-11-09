@@ -31,8 +31,7 @@ exports.sayNumber = functions.https.onRequest((request, response) => {
   function mainIntent (app) {
     console.log('mainIntent');
     let inputPrompt = app.buildInputPrompt(true, '<speak>Hi! <break time="1"/> ' +
-      'I can read out an ordinal like ' +
-      '<say-as interpret-as="ordinal">123</say-as>. Say a number.</speak>', NO_INPUTS);
+    'I am online repeater. Say something.</speak>', NO_INPUTS);
     app.ask(inputPrompt);
   }
 
@@ -41,8 +40,7 @@ exports.sayNumber = functions.https.onRequest((request, response) => {
     if (app.getRawInput() === 'bye') {
       app.tell('Goodbye!');
     } else {
-      let inputPrompt = app.buildInputPrompt(true, '<speak>You said, <say-as interpret-as="ordinal">' +
-        app.getRawInput() + '</say-as></speak>', NO_INPUTS);
+      let inputPrompt = app.buildInputPrompt(true, '<speak>' + app.getRawInput() + '</speak>', NO_INPUTS);
       app.ask(inputPrompt);
     }
   }
